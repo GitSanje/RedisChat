@@ -1,48 +1,20 @@
 import React from "react";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Button } from "../ui/button";
-import Image from "next/image";
-import { signIn } from "next-auth/react";
-import { DialogDescription } from "@radix-ui/react-dialog";
+import { Card } from "@/components/ui/card";
 
-const handleGoogleLogin = async () => {
-  signIn("google", {
-    redirect: true,
-    callbackUrl: "/",
-  });
-};
-
-export default function LoginModal() {
+export default function FeatureCard({
+  icon,
+  title,
+  description,
+}: {
+  icon: string;
+  title: string;
+  description: string;
+}) {
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button>Getting start</Button>
-      </DialogTrigger>
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle className="text-2xl">Welcome to QuickChat</DialogTitle>
-          <DialogDescription>
-            QuickChat makes it effortless to create secure chat links and start
-            conversations in seconds.
-          </DialogDescription>
-        </DialogHeader>
-        <Button variant="outline" onClick={handleGoogleLogin}>
-          <Image
-            src="/images/google.png"
-            className=" mr-4"
-            width={25}
-            height={25}
-            alt="google"
-          />
-          Continue with Google
-        </Button>
-      </DialogContent>
-    </Dialog>
+    <Card className="p-6 bg-card">
+      <div className="text-3xl mb-4">{icon}</div>
+      <h3 className="text-xl font-semibold mb-2">{title}</h3>
+      <p className="text-muted-foreground">{description}</p>
+    </Card>
   );
 }
