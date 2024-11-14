@@ -13,11 +13,18 @@ class AuthController {
   static async login(req: Request, res: Response) {
     try {
       const body: LoginPayloadType = req.body;
+      console.log('====================================');
+      console.log("body",body);
+      console.log('====================================');
       let findUser = await prisma.user.findUnique({
         where: {
           email: body.email,
         },
       });
+      console.log('====================================');
+      console.log("findUser",findUser);
+      console.log('====================================');
+     
 
       if (!findUser) {
         findUser = await prisma.user.create({
@@ -43,6 +50,9 @@ class AuthController {
         },
       });
     } catch (error) {
+      console.log('====================================');
+      console.log("error from authcontroller",error);
+      console.log('====================================');
       return res
         .status(500)
         .json({ message: "Something went wrong.please try again!" });

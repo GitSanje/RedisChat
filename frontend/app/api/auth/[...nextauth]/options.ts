@@ -41,9 +41,15 @@ export const authOptions: AuthOptions = {
 
         user.id = data?.user?.id?.toString();
         user.token = data?.user?.token;
+        console.log('====================================');
+        console.log(user,"from signin");
+        console.log('====================================');
         return true;
       } catch (error) {
         if (error instanceof AxiosError) {
+          console.log('====================================');
+        console.log(error.message,"from axios err");
+        console.log('====================================');
           return redirect(`/auth/error?message=${error.message}`);
         }
         return redirect(
