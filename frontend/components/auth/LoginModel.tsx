@@ -26,7 +26,7 @@ export default function LoginModal() {
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle className="text-2xl">Welcome to QuickChat</DialogTitle>
+          <DialogTitle className="text-2xl">Welcome to RedisChat</DialogTitle>
           <DialogDescription>
             QuickChat makes it effortless to create secure chat links and start
             conversations in seconds.
