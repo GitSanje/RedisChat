@@ -2,22 +2,16 @@ import React, { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import { getSocket } from "@/lib/socket.config";
 import { Input } from "../ui/input";
 import { v4 as uuidv4 } from "uuid";
-
-
-
 export default function Chats({
-    group,
-    oldMessages,
-    chatUser,
-  }: {
-    group: GroupChatType;
-    oldMessages: Array<MessageType> | [];
-    chatUser?: GroupChatUserType;
-  })
-
-{
-
-    const [message, setMessage] = useState("");
+  group,
+  oldMessages,
+  chatUser,
+}: {
+  group: GroupChatType;
+  oldMessages: Array<MessageType> | [];
+  chatUser?: GroupChatUserType;
+}) {
+  const [message, setMessage] = useState("");
   const [messages, setMessages] = useState<Array<MessageType>>(oldMessages);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -32,7 +26,7 @@ export default function Chats({
     };
     return socket.connect();
   }, []);
-
+  
   useEffect(() => {
     socket.on("message", (data: MessageType) => {
       console.log("The message is", data);
@@ -44,7 +38,6 @@ export default function Chats({
       socket.close();
     };
   }, []);
-
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
@@ -90,5 +83,4 @@ export default function Chats({
       </form>
     </div>
   );
-
 }
